@@ -2,27 +2,27 @@
 using namespace std;
 int main()
 {
-    string s,s1;
+    string s;
     cin>>s;
-    // string s1="";
     int p;
     for(int i=0;i<s.length();i++)
     {
-        if(s[i]>='A' || s[i]<='Z')
+        while (start<end && !isalnum(s[start]))
         {
-            s[i]= s[i] + ('a'-'A');
-            s1[i] += s[i];
+            start++;
         }
-        if(s[i]>='a' || s[i]<='z')
+       while (start<end && !isalnum(s[end]))
         {
-            s1[i] += s[i];
+            end--;
         }
+        if(start<end && tolower(s[start]) != tolower(s[end])) p=0;
+        
     }
-    cout<<s;
-    // if(p==1)
-    // {
-    //     cout<<"true";
-    // }
-    // else cout<<"false";
+    p=1;
+    if(p==1)
+    {
+        cout<<"true";
+    }
+    else cout<<"false";
     return 0;
 }
