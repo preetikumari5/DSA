@@ -1,4 +1,4 @@
-//  rotated array
+//  rotated array leetcode 189
 
 #include<bits/stdc++.h>
 using namespace std;

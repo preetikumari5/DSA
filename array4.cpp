@@ -1,6 +1,5 @@
 // remove duplicates from array
 
-
 #include<bits/stdc++.h>
 
 using namespace std;

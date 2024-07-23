@@ -17,7 +17,7 @@ int main()
     {
         if(a[i]>a[(i+1)%n]) count++;
     }
-    if(count==1) cout<<"true";
+    if(count<=1) cout<<"true";
     else cout<<"false";
     return 0;
 }

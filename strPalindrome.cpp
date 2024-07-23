@@ -5,7 +5,9 @@ int main()
     string s;
     cin>>s;
     int p;
-    for(int i=0;i<s.length();i++)
+    int start = 0;
+    int end = s.length()-1;
+    while(start<end)
     {
         while (start<end && !isalnum(s[start]))
         {
