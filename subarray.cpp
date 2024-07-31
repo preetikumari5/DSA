@@ -44,7 +44,6 @@ int longestSubarray(vector<int> a,long long k)
         while(sum>k)
         {
             sum-=a[left];
-            left++:
         }
         if(sum==k)
         {
