@@ -4,6 +4,28 @@
 #include<bits./stdc++.h>
 using namespace std;
 
+// brute force approach
+int longestSubarray(vector<int> a,long long k)
+{
+    int len = 0;
+    for(int i=0;i<a.size();i++)
+    {
+        for(int j=i;j<a.size();j++)
+        {
+            int s = 0;
+            for(int l = i;l<=j;l++)
+            {
+                s = s+a[i];
+            }
+            if(s==k)
+            {
+                len = max(len,j-i+1);
+            }
+        }
+    }
+    return len;
+}
+
 // better solution for negative,positive or zero
 int longestSubarray(vector<int> a,long long k)
 {
