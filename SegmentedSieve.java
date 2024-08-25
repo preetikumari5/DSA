@@ -1,6 +1,6 @@
 // prime  number in a range
 
-// import java.util.*;
+import java.util.*;
 public class SegmentedSieve {
     public static void SegSieve(int l,int h)
     {
