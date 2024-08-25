@@ -3,7 +3,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class StrobogrammaticNumber {
 // Function to check if a given number is strobogrammatic
     static boolean isStrobogrammatic(String num) {
         Map<Character, Character> map = new HashMap<>();
