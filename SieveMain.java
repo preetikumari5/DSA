@@ -30,3 +30,4 @@ public class SieveMain{
         SimpleSieve(a);
     }
 }
+

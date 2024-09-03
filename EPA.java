@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
-public class EPA {
-    
+public class EPA {  
     // Method to calculate Euler's Totient function (phi function)
     public static int phi(int n) {
         int result = n;  // Initialize result as n
@@ -38,3 +36,4 @@ public class EPA {
         System.out.println("phi(" + n + ") = " + phi_n);  // Print the result
     }
 }
+
