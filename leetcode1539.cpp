@@ -20,3 +20,12 @@ public:
     return k + high + 1;
     }
 };
+
+
+// 2nd method
+for(int i=0;i<arr.size();i++)
+{
+    if(arr[i]<=k) k++;
+    else break;
+}
+return k;
