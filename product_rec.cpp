@@ -1,18 +1,18 @@
-// sum of digits of given number
+// product of digits of a given number
 
 #include<iostream>
 using namespace std;
 
-int sumD(int n)
+int product(int n)
 {
     if(n<10) return n;
-    return (n%10)  + sumD(n/10);
+    return (n%10) * product(n/10);
 }
 
 int main()
 {
     int k;
     cin>>k;
-    cout<<sumD(k);
+    cout<<product(k);
     return 0;
 }
