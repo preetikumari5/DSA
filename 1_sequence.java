@@ -1,4 +1,4 @@
-Longest Sequence of 1 after flipping a bit
+// Longest Sequence of 1 after flipping a bit
 
 import java.util.*;
 public class Main {
