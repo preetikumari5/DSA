@@ -1,36 +1,21 @@
-// leetcode 125
+
 #include<bits/stdc++.h>
 using namespace std;
-bool ispalindrome(string str)
+bool ispalindrome(int i,string &s)
 {
-    int l = 0;
-    int r = str.length()-1;
-    if(str.length()==1) return true;
-    while(l<r)
-    {
-        while(l<r && !isalnum(str[l]))
-        {
-            l++;
-        }
-        while(l<r && !isalnum(str[r]))
-        {
-            r--;
-        }
-        if(tolower(str[l]) != tolower(str[r])) return false;
-        l++;
-        r--;
-    }
-    return true;
+    if(i>= s.size()/2) return true;
+    if(s[i] != s[s.size()-i-1]) return false;
+    return ispalindrome(i+1,s);
 }
 int main()
 {
     string str;
+    cout<<"enter string: ";
     cin>>str;
-    if(ispalindrome(str))
+    if(ispalindrome(0,str))
     {
         cout<<"yes";
     } 
     else cout<<"no";
     return 0;
 }
-// A man, a plan, a canal: Panama
