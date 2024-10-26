@@ -10,7 +10,6 @@ public class Booth {
         int count = Integer.SIZE; // Number of bits for multiplication
         int Q = multiplier;     // Copy of multiplier
         int Q_1 = 0;            // Q-1 initialized to 0
-
         while (count > 0) {
             // Check the last bit of Q and Q-1
             if ((Q & 1) == 1 && Q_1 == 0) {
@@ -20,7 +19,6 @@ public class Booth {
                 // Subtract S from the product
                 P += S;
             }
-
             // Shift right (A, Q, Q-1)
             Q_1 = Q & 1; // Save the last bit of Q
             Q >>= 1;     // Right shift Q
@@ -28,10 +26,8 @@ public class Booth {
             P >>= 1;     // Right shift the product
             count--;     // Decrease the bit count
         }
-
         return P; // Return the final product
     }
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Booth boothMultiplier = new Booth();

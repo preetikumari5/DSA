@@ -1,7 +1,6 @@
-public import java.util.Scanner;
-
+// array left rotation
+import java.util.Scanner;
 public class Main {
-
     // Utility function to swap d elements starting from index start1 and start2
     public static void swap(int[] arr, int start1, int start2, int d) {
         for (int i = 0; i < d; i++) {
@@ -10,14 +9,12 @@ public class Main {
             arr[start2 + i] = temp;
         }
     }
-
     // Block Swap Algorithm to rotate the array
     public static void leftRotate(int[] arr, int d, int n) {
         // If no rotation is needed
         if (d == 0 || d == n) {
             return;
         }
-
         // If the first block is smaller or equal to the second block
         if (d < n - d) {
             // Swap the first d elements with the last d elements
@@ -33,7 +30,6 @@ public class Main {
             leftRotate(arr, n - d, d);
         }
     }
-
     // Function to print the array
     public static void printArray(int[] arr, int n) {
         for (int i = 0; i < n; i++) {
@@ -41,7 +37,6 @@ public class Main {
         }
         System.out.println();
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -68,6 +63,4 @@ public class Main {
         sc.close();
     }
 }
- {
-    
-}
+ 
