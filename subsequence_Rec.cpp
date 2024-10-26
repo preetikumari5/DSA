@@ -14,14 +14,15 @@ void subseq(int index , vector<int> &ds , int arr[],int n)
         cout<<endl;
         return;
     }
-
+    subseq(index+1,ds,arr,n);
     // take the particular index into subsequence
     ds.push_back(arr[index]);
     subseq(index+1,ds,arr,n);
 
     // not take index element in the subsequence
     ds.pop_back();
-    subseq(index+1,ds,arr,n);
+    // order reverse 
+    // subseq(index+1,ds,arr,n);
 }
 
 int main()
