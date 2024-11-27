@@ -1,6 +1,6 @@
 // swapping nibbles
 
-public import java.util.*;
+import java.util.*;
 public class Main {
     public static int swap(int x)
     {
