@@ -1,5 +1,5 @@
+// find longest plaindromic substring
 import java.util.Scanner;
-
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,10 +9,8 @@ class Main {
             System.out.println("No input provided.");
             return;
         }
-
         System.out.println("Longest Palindromic Substring: " + findLongestPalindromicString(text));
     }
-
     static String findLongestPalindromicString(String text) {
         int N = text.length();
         int[] L = new int[2 * N + 1];
@@ -27,18 +25,15 @@ class Main {
                     text.charAt((i + L[i] + 1) / 2) == text.charAt((i - L[i] - 1) / 2))) {
                 L[i]++;
             }
-
             if (i + L[i] > R) {
                 C = i;
                 R = i + L[i];
             }
-
             if (L[i] > maxLen) {
                 maxLen = L[i];
                 center = i;
             }
         }
-
         int start = (center - maxLen) / 2;
         return text.substring(start, start + maxLen);
     }
