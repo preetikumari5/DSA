@@ -12,9 +12,7 @@ class Main {
             this.priority = priority;
         }
     }
-
     private static Node head = null;
-
     private static void push(int data, int priority) {
         if (head == null) {
             Node newNode = new Node(data, priority);
@@ -23,12 +21,10 @@ class Main {
         }
         Node node = new Node(data, priority);
         Node temp = head, parent = null;
-
         while (temp != null && temp.priority >= priority) {
             parent = temp;
             temp = temp.next;
         }
-
         if (parent == null) {
             node.next = head;
             head.prev = node;
@@ -43,14 +39,12 @@ class Main {
             temp.prev = node;
         }
     }
-
     private static int peek() {
         if (head != null) {
             return head.data;
         }
         return -1;
     }
-
     private static int pop() {
         if (head != null) {
             int curr = head.data;
@@ -61,7 +55,6 @@ class Main {
         }
         return -1;
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -71,7 +64,6 @@ class Main {
             int pri = sc.nextInt();
             push(data, pri);
         }
-
         System.out.println(peek());
         System.out.println(pop());
         System.out.println(pop());

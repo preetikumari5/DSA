@@ -1,9 +1,7 @@
 import java.util.*;
-
 class Node {
     int num;
     Node next;
-
     Node(int val) {
         num = val;
         next = null;
