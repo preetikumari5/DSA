@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Main {
 
     // Stack class for managing disks
