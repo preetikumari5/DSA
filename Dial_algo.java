@@ -1,9 +1,9 @@
 import java.util.*;
-public class Graph {
+public class Dial_algo {
 	static final int INF = Integer.MAX_VALUE; 
 	private int V;
 	private ArrayList<ArrayList<Tuple> > adj;
-	public Graph(int v){
+	public Dial_algo(int v){
 		this.V = v;
 		this.adj = new ArrayList<ArrayList<Tuple> >();
 		for (int i = 0; i < v; i++)
@@ -55,7 +55,7 @@ public class Graph {
 	public static void main(String[] args){
 	    Scanner s=new Scanner(System.in);
 		int V = s.nextInt();
-		Graph g = new Graph(V);
+		Dial_algo g = new Dial_algo(V);
 		int e=s.nextInt();
 		int st,en,d;
         for(int i=0; i<e; i++){
