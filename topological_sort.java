@@ -1,86 +1,60 @@
 import java.util.*;
 
-class TopologicalSort {
-  // Graph coloring: 0->not visited...1->visited...2->visited & processed
-  private boolean detectCycleUtil(List<List<Integer>> adj, int[] visited, int v) {
-    if (visited[v] == 1)
-      return true;
-    if (visited[v] == 2)
-      return false;
-
-    visited[v] = 1; // Mark current as visited
-    for (int i = 0; i < adj.get(v).size(); ++i)
-      if (detectCycleUtil(adj, visited, adj.get(v).get(i)))
-        return true;
-
-    visited[v] = 2; // Mark current node as processed
-    return false;
-  }
- // Cycle detection
- private boolean detectCycle(List<List<Integer>> adj, int n) {
-    int[] visited = new int[n];
-    for (int i = 0; i < n; ++i)
-      if (visited[i] == 0)
-        if (detectCycleUtil(adj, visited, i))
-          return true;
-    return false;
-  }
-
-  // Topological sort
-  private void dfs(List<List<Integer>> adj, int v, boolean[] visited, Stack<Integer> mystack) {
-    visited[v] = true;
-    for (int i = 0; i < adj.get(v).size(); ++i)
-      if (!visited[adj.get(v).get(i)])
-        dfs(adj, adj.get(v).get(i), visited, mystack);
-
-    mystack.push(v);
-  }
-  public int[] findOrder(int numCourses, int[][] prerequisites) {
-    List<List<Integer>> adj = new ArrayList<>();
-    for (int i = 0; i < numCourses; i++)
-      adj.add(new ArrayList<>());
-    
-    for (int i = 0; i < prerequisites.length; ++i)
-      adj.get(prerequisites[i][1]).add(prerequisites[i][0]);
-    
-    int[] ans = new int[numCourses];
-    if (detectCycle(adj, numCourses))
-      return new int[0];
-   
-    Stack<Integer> mystack = new Stack<>();
-    boolean[] visited = new boolean[numCourses];
-    
-    for (int i = 0; i < numCourses; ++i)
-      if (!visited[i])
-        dfs(adj, i, visited, mystack);
-    int index = 0;
-    while (!mystack.isEmpty()) {
-      ans[index++] = mystack.pop();
-    }
-    return ans;
-  }
-  public static void main(String[] args) {
-    TopologicalSort solution = new TopologicalSort();
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.print("Enter the number of courses: ");
-    int numCourses = scanner.nextInt();
-
-    System.out.print("Enter the number of prerequisites: ");
-    int n = scanner.nextInt();
-    int[][] prerequisites = new int[n][2];
-
-    System.out.println("Enter prerequisite pairs (course, prerequisite):");
-    for (int i = 0; i < n; i++) {
-      prerequisites[i][0] = scanner.nextInt();
-      prerequisites[i][1] = scanner.nextInt();
+class Main {
+    public static int[] findOrder(int numCourses, int[][] prerequisites) {
+        List<List<Integer>> adj = new ArrayList<>();
+        int[] indegree = new int[numCourses];
+        Queue<Integer> queue = new LinkedList<>();
+        int[] result = new int[numCourses];
+        
+        // Initialize adjacency list
+        for (int i = 0; i < numCourses; i++)
+            adj.add(new ArrayList<>());
+        
+        // Build graph & compute in-degree
+        for (int[] pre : prerequisites) {
+            adj.get(pre[1]).add(pre[0]);
+            indegree[pre[0]]++;
+        }
+        
+        // Add all courses with in-degree 0 to queue
+        for (int i = 0; i < numCourses; i++)
+            if (indegree[i] == 0)
+                queue.add(i);
+        
+        // BFS (Topological Sorting)
+        int index = 0;
+        while (!queue.isEmpty()) {
+            int course = queue.poll();
+            result[index++] = course;
+            
+            for (int neighbor : adj.get(course)) {
+                indegree[neighbor]--;
+                if (indegree[neighbor] == 0)
+                    queue.add(neighbor);
+            }
+        }
+        
+        return (index == numCourses) ? result : new int[0]; // If cycle exists, return []
     }
 
-    int[] result = solution.findOrder(numCourses, prerequisites);
-    System.out.println("Topological order of courses:");
-    System.out.println(Arrays.toString(result));
-  }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter number of courses: ");
+        int numCourses = scanner.nextInt();
+        
+        System.out.print("Enter number of prerequisites: ");
+        int n = scanner.nextInt();
+        int[][] prerequisites = new int[n][2];
+
+        System.out.println("Enter prerequisite pairs (course, prerequisite):");
+        for (int i = 0; i < n; i++) {
+            prerequisites[i][0] = scanner.nextInt();
+            prerequisites[i][1] = scanner.nextInt();
+        }
+
+        int[] result = findOrder(numCourses, prerequisites);
+
+        System.out.println("Topological Order: " + Arrays.toString(result));
+    }
 }
-
-
-
