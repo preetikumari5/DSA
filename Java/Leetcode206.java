@@ -1,4 +1,4 @@
-// reverse a SLL
+// reverse a SLL using iterative method
 
 /**
  * Definition for singly-linked list.
@@ -12,12 +12,13 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head==null || head.next==null) 
-            return head;
-        ListNode newNode = reverseList(head.next);
-        ListNode front = head.next;
-        front.next = head;
-        head.next = null;
-        return newNode;
+        ListNode node = null;
+        while(head!=null){
+            ListNode temp = head.next;
+            head.next = node;
+            node = head;
+            head = temp;
+        }
+        return node;
     }
 }
